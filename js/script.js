@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
         } else {
             // Scrolling up
-            currentSectionIndex = Math.max(currentSectionIndex - 1, 0);
+            currentSectionIndex = Math.min(currentSectionIndex - 1, sections.length + 1);
         }
 
         scrollToSection(currentSectionIndex);
