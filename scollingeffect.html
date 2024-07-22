@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blob to Circle on Scroll</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .blob {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            position: fixed;
+            top: 50%;
+            left: 50% ;
+            transition: all 0.3s ease;
+        }
+
+        .content {
+            height: 2000px; /* Make the page scrollable */
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="blob"></div>
+    <div class="content">
+        <!-- Add some content to make the page scrollable -->
+        <p>Scroll down to see the effect...</p>
+        <p>More content...</p>
+        <p>Even more content...</p>
+    </div>
+
+    <script>
+        const blob = document.querySelector('.blob');
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+        function updateBlobShape() {
+            const scrollProgress = window.scrollY / maxScroll;
+            const borderRadius = Math.min(50, scrollProgress * 50);
+            
+            blob.style.borderRadius = `${borderRadius}% ${50 - borderRadius}% ${50 - borderRadius}% ${borderRadius}% / ${50 - borderRadius}% ${borderRadius}% ${borderRadius}% ${50 - borderRadius}%`;
+        }
+
+        window.addEventListener('scroll', updateBlobShape);
+        window.addEventListener('resize', () => {
+            maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            updateBlobShape();
+        });
+
+        // Initial call to set the initial shape
+        updateBlobShape();
+    </script>
+</body>
+</html>
