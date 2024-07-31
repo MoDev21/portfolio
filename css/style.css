@@ -7,10 +7,11 @@ body{
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+    background-color: rgb(60, 81, 177);
 }
 
 header{
-    background-color: rgb(60, 81, 177);
+    
     padding: 10px;
     margin: 0;
     text-align: center;
@@ -19,13 +20,37 @@ header{
 
 header svg{
     position: relative;
+    transition: 1s;
 }
+
+
 
 header h1{
     color: rgb(255, 255, 255);
-    font-size: 6rem;
+    font-size: 9rem;
     margin: 14% 0 21% 0%;
     text-align: initial;
+}
+
+.blue_circle{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: rgba(137, 152, 219, 0.281);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: 1s;
+}
+
+.color_changer{
+    background-color: rgba(157, 236, 168, 0.507);
+}
+
+.color_changer_v2{
+    background-color: rgba(185, 0, 241, 0.757);
 }
 
 .content_zone{
@@ -271,7 +296,6 @@ header nav li:hover{
     flex-wrap: wrap;
     align-items: center;
     gap: 18px;
-    background-color: rgb(52 102 177);
     height: auto;
 }
 
@@ -338,7 +362,7 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    height: 100vh;
 }
 
 .footer-content{

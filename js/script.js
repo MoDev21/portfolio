@@ -77,21 +77,43 @@ document.addEventListener('DOMContentLoaded', function() {
             isScrolling = true;
             const targetSection = sections[index];
             const targetPosition = targetSection.offsetTop - window.innerHeight * 0;
-
+            window.removeEventListener('wheel', scrollToSection);
+            
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
 
-            console.log('sections.length:'+ sections.length);
+            switch (index) {
+                case 0:
+                    bluecircle.classList.remove('color_changer');
+                    break;
+                case 1:
+                    bluecircle.classList.add('color_changer');
+                    break;
+                case 2:
+                    bluecircle.classList.remove('color_changer');
+                    bluecircle.classList.add('color_changer_v2');
+                    break;
+                case 3:
+                default:
+                    break;
+            }
+
+            console.log('sections.length:'+ index);
             setTimeout(() => {
                 isScrolling = false;
                 console.log('isScrolling: ' + isScrolling);
             }, 1000); // Adjust this value based on your scroll animation duration
         }
     }
-    window.addEventListener('wheel', function(event) {
 
+    var counter = 0;
+    window.addEventListener('wheel', handleScrollEvent);
+
+    function handleScrollEvent(event) {
+        // counter++;
+        // console.log('counter: '+ counter);
         if (event.deltaY > 0) {
             // Scrolling down
             currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
@@ -101,17 +123,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         scrollToSection(currentSectionIndex);
-    });
+    }
+
+    const bluecircle = document.querySelector('.blue_circle');
 
     // Optional: Update current section on regular scroll
-    window.addEventListener('scroll', function() {
+    window.addEventListener('wheel', function() {
 
 
         const scrollPosition = window.scrollY;
         for (let i = 0; i < sections.length; i++) {
             if (scrollPosition >= sections[i].offsetTop - window.innerHeight / 2) {
-                console.log('section length: ', sections.length);
+                // console.log('section length: ', (((scrollPosition / sections[i].offsetTop) * 100) - 50) + '%');
+                // console.log('current section index: ', (sections[i].offsetTop - window.innerHeight / 2));
                 currentSectionIndex = i;
+                // bluecircle.style.borderRadius = (((scrollPosition / sections[i].offsetTop) * 100) - 50) + '%';
+                
             }
         }
     });
