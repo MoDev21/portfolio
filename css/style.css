@@ -32,7 +32,82 @@ header h1{
     text-align: initial;
 }
 
+
+#first_span{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: rgba(89, 119, 252, 0.822);
+    position: fixed;
+    top: 25%;
+    left: 37%;
+    z-index: 0;
+    /* transition: 1s; */
+    /* animation: turn_to_shrink_animation 1s linear forwards; */
+    /* animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -3s); */
+    
+}
+
+#second_span{
+    width: 500px;
+    height: 500px;
+    border-radius: 0%;
+    background-color: rgba(184, 224, 209, 0.726);
+    position: fixed;
+    top: 25%;
+    left: 37%;
+    z-index: 0;
+    /* transition: 1s;
+    transform: scale(1); */
+    /* animation: turn_to_shrink_animation 1s linear reverse; */
+    /* animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -3s); */
+}
+
+#third_span{
+    width: 500px;
+    height: 500px;
+    border-radius: 20%;
+    background-color: rgba(198, 9, 236, 0.39);
+    position: fixed;
+    top: 25%;
+    left: 37%;
+    z-index: 0;
+    /* transition: .01s;
+    transform: scale(1); */
+    /* animation: turn_to_shrink_animation 1s linear forwards; */
+    /* animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -3s); */
+}
+
+@keyframes turn_to_shrink_animation { 
+    0% {
+        transform: scale(1);
+    } 
+    100% {
+        transform: scale(0.1);
+    } 
+} 
+
 .blue_circle{
+    transform: scale(0.1);
+    animation: turn_to_shrink_animation linear;
+    animation-timeline: view();
+    animation-range: 0% 100%;
+}
+
+.yellow_circle{
+    transform: scale(0.1);
+    animation: turn_to_shrink_animation linear;
+}
+
+.green_circle{
+    transform: scale(0.1);
+    animation: turn_to_shrink_animation 1s forwards;
+}
+
+.color_changer{
     width: 500px;
     height: 500px;
     border-radius: 50%;
@@ -42,14 +117,19 @@ header h1{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
-    transition: 1s;
-}
-
-.color_changer{
     background-color: rgba(157, 236, 168, 0.507);
 }
 
 .color_changer_v2{
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: rgba(137, 152, 219, 0.281);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
     background-color: rgba(185, 0, 241, 0.757);
 }
 

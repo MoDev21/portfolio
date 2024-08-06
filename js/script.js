@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section, header, footer');
     let currentSectionIndex = 0;
     let isScrolling = false;
+    const classListNameArray = ['blue_circle', 'yellow_circle', 'color_changer', 'color_changer_v2'];
+    const firstSpan = document.querySelector('#first_span');
+    const secondSpan = document.querySelector('#second_span');
+    const thirdSpan = document.querySelector('#third_span');
 
     function scrollToSection(index) {
         if (index >= 0 && index < sections.length) {
@@ -84,18 +88,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 behavior: 'smooth'
             });
 
+            function classListNameChange() {
+                for (let i = 0; i < classListNameArray.length; i++) {
+                    bluecircle.classList.remove(classListNameArray[i]);
+                }
+                
+                if (currentSectionIndex !== 0) {
+                    bluecircle.classList.add(classListNameArray[currentSectionIndex]);
+                }
+                
+            }
+        
+            
+
             switch (index) {
                 case 0:
-                    bluecircle.classList.remove('color_changer');
+                    // firstSpan.style.animation = 'turn_to_shrink_animation 1s linear forwards';
+                    // firstSpan.style.animationPlayState = 'paused';
+                    // firstSpan.style.animationDelay = 'calc(var(--scroll) * -3s)';                   
+                    // animation-play-state: paused;
+                    // animation-delay: calc(var(--scroll) * -3s);
                     break;
                 case 1:
-                    bluecircle.classList.add('color_changer');
+                    firstSpan.style.animation = 'turn_to_shrink_animation 1s cubic-bezier(.19,1,.22,1) forwards';
+                    firstSpan.style.animationPlayState = 'paused';
+                    firstSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';         
                     break;
                 case 2:
-                    bluecircle.classList.remove('color_changer');
-                    bluecircle.classList.add('color_changer_v2');
+                    secondSpan.style.animation = 'turn_to_shrink_animation 1s cubic-bezier(.19,1,.22,1) forwards';
+                    secondSpan.style.animationPlayState = 'paused';
+                    secondSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';         
                     break;
                 case 3:
+                    thirdSpan.style.animation = 'turn_to_shrink_animation 1s cubic-bezier(.19,1,.22,1) forwards';
+                    thirdSpan.style.animationPlayState = 'paused';
+                    thirdSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';          
+                    break;
+                case 4:
                 default:
                     break;
             }
@@ -103,10 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('sections.length:'+ index);
             setTimeout(() => {
                 isScrolling = false;
-                console.log('isScrolling: ' + isScrolling);
             }, 1000); // Adjust this value based on your scroll animation duration
         }
     }
+
 
     var counter = 0;
     window.addEventListener('wheel', handleScrollEvent);
@@ -136,10 +165,26 @@ document.addEventListener('DOMContentLoaded', function() {
             if (scrollPosition >= sections[i].offsetTop - window.innerHeight / 2) {
                 // console.log('section length: ', (((scrollPosition / sections[i].offsetTop) * 100) - 50) + '%');
                 // console.log('current section index: ', (sections[i].offsetTop - window.innerHeight / 2));
+
                 currentSectionIndex = i;
                 // bluecircle.style.borderRadius = (((scrollPosition / sections[i].offsetTop) * 100) - 50) + '%';
+                sections.forEach((section, index) => {
+                    window.addEventListener("scroll", () => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+                        const scrollPosition = window.scrollY;
+                        
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
+                            section.style.setProperty("--scroll", sectionProgress);
+                            console.log(`Section ${index + 1} scroll progress:`, sectionProgress);
+                        }
+                    }, false);
+                });
                 
             }
         }
     });
+
+
 });
