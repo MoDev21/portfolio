@@ -6,35 +6,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // const categories = carousel.querySelectorAll('.categories > div');
     const categories_div = document.querySelector('.categories');
     // const categories_array = Array.from(categories);
-    const categories_center = carousel.querySelector('.home__categorie_center');
+    // const categories_center_container = document.querySelector('.home__categorie_center_container');
+    // const categories_right_container = document.querySelector('.home__categorie_right_container');
+    // const categories_left_container = document.querySelector('.home__categorie_left_container');
+    const categories_center = document.querySelector('.home__categorie_center');
+    const categories_right = document.querySelector('.home__categorie_right');
+    const categories_left = document.querySelector('.home__categorie_left');
     const categories_array_reordered = document.createDocumentFragment();
     const home__portfolio = document.querySelector('#home__portfolio');
     const categorie_details_object_array = [
         {'images_url': '/images/ab817f161830163.63cb810c22ead.jpg', 'title': 'Work', 'description': 'lorem ipsum'}, 
         {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'}, 
-        {'images_url': 'images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'}, 
-        {'images_url': 'images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': 'images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'}];
+        {'images_url': '/images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/the_chosen.jpg', 'title': 'Work', 'description': 'lorem ipsum'}];
     const dropDownMenuCategoryArray = ['web dev', 'mobile dev', 'design', 'more'];
     let currentIndex = 0;
     // console.log(categories);
     function showcategorie() {
         categorie_details_object_array.forEach((c, i) => {
-            const categorie = document.createElement('div');
+            if (i <= 2) {
+                // const categorie = document.createElement('div');
+                // categories_div.append(categorie);
+                console.log(categories_div.children[i]);
+                // if (i === 0) {
+                //     categories_div.children[i].classList.add('home__categorie_left');
+                // }
+                // else if (i === 1) {
+                //     categories_div.children[i].classList.add('home__categorie_center');
+                // }
+                // else {
+                //     categories_div.children[i].classList.add('home__categorie_right');
+                // }
+                categories_div.children[i].style.backgroundImage  = `url(${categorie_details_object_array[i].images_url})`;
+            }
             
-            categories_div.append(categorie);
-            console.log(categories_div.children[i]);
-            categories_div.children[i].classList.add('home__categorie_sides');
             // if (i !== 1) {
             //     categories_div.children[i].classList.add('home__categorie_sides');
             // }
@@ -46,12 +51,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showcategorie();
 
-    home__portfolio.addEventListener('click', () => {
-        categories_div.classList.add('categories_animation');
-        setTimeout(() => {
-            categories_div.classList.remove('categories_animation');
-        }, 950);
+    categories_left.addEventListener('click', () => {
+        console.log('left');
+        categories_left.classList.add('left-to-center_animation');
+        categories_center.classList.add('center-to-right_animation');
+        categories_right.classList.add('right-to-left_animation');
+        categories_right.classList.remove('right-to-center_animation');
+        categories_center.classList.remove('center-to-left_animation');
+        categories_left.classList.remove('left-to-right_animation');
     });
+
+    categories_right.addEventListener('click', () => {
+        console.log('right');
+        categories_left.classList.remove('left-to-center_animation');
+        categories_center.classList.remove('center-to-right_animation');
+        categories_right.classList.remove('right-to-left_animation');
+    });
+
+    // function slideLeft() {
+        
+    // }
+
+    // home__portfolio.addEventListener('click', () => {
+    //     categories_div.classList.add('categories_animation');
+    //     setTimeout(() => {
+    //         categories_div.classList.remove('categories_animation');
+    //     }, 950);
+    // });
 
     // categories_div.addEventListener('scroll', () => {
     //     categories_div.style.setProperty("--scroll-categories", categories_div.scrollLeft / (categories_div.scrollWidth - categories_div.clientWidth));
@@ -68,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     categories_div.addEventListener('click', () => {
         for (let i = 0; i < categories_div.children.length; i++) {
             categories_div.children[i].classList.add('home__sie_sides_animation');
+            
             setTimeout(() => {
                 categories_div.children[i].classList.remove('home__sie_sides_animation');
             }, 950);
