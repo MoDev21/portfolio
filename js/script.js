@@ -3,59 +3,111 @@ document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.querySelector('.carrousel');
     const prevBtn = carousel.querySelector('.previous');
     const nextBtn = carousel.querySelector('.next');
-    const categories = carousel.querySelectorAll('.categories > div')
+    // const categories = carousel.querySelectorAll('.categories > div');
     const categories_div = document.querySelector('.categories');
-    const categories_array = Array.from(categories);
+    // const categories_array = Array.from(categories);
     const categories_center = carousel.querySelector('.home__categorie_center');
     const categories_array_reordered = document.createDocumentFragment();
-    const categorie_details_object_array = [{'images_url': '/images/ab817f161830163.63cb810c22ead.jpg', 'title': 'Work', 'description': 'lorem ipsum'}, {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'}, {'images_url': 'images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'}];
+    const home__portfolio = document.querySelector('#home__portfolio');
+    const categorie_details_object_array = [
+        {'images_url': '/images/ab817f161830163.63cb810c22ead.jpg', 'title': 'Work', 'description': 'lorem ipsum'}, 
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'}, 
+        {'images_url': 'images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'}, 
+        {'images_url': 'images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': 'images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'}];
+    const dropDownMenuCategoryArray = ['web dev', 'mobile dev', 'design', 'more'];
     let currentIndex = 0;
-    console.log(categories);
+    // console.log(categories);
     function showcategorie() {
         categorie_details_object_array.forEach((c, i) => {
             const categorie = document.createElement('div');
             
             categories_div.append(categorie);
             console.log(categories_div.children[i]);
-            if (i !== 1) {
-                
-                categories_div.children[i].classList.add('home__categorie_sides');
-            }
-            else {
-                categories_div.children[i].classList.add('home__categorie_center');
-            }
+            categories_div.children[i].classList.add('home__categorie_sides');
+            // if (i !== 1) {
+            //     categories_div.children[i].classList.add('home__categorie_sides');
+            // }
+            // else {
+            //     categories_div.children[i].classList.add('home__categorie_center');
+            // }
         });
     }
 
     showcategorie();
 
-    categories_div.addEventListener('click', () => {
-        categories[1].classList.add('home__categorie_center_animation');
-        categories[2].classList.add('home__categorie_sides_animation');
+    home__portfolio.addEventListener('click', () => {
+        categories_div.classList.add('categories_animation');
         setTimeout(() => {
-            // categories.forEach((categorie, i) => {;
-            //     categorie.classList.add('home__categorie_sides');
-            //     categories_array.appendChild(categories_array_reordered);
-            // });
-            categories[0].remove();
-            categories_div.append(categories_array[0]);
+            categories_div.classList.remove('categories_animation');
         }, 950);
-        console.log('categories_center.classList.add');
-        // setTimeout(() => {
-        //     categories_center.classList.remove('home__categorie_center_animation');
-        //     console.log('categories_center.classList.remove');
-        // }, 1000);
-    });
-    
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + categories.length) % categories.length;
-        showcategorie(currentIndex);
     });
 
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % categories.length;
-        showcategorie(currentIndex);
+    // categories_div.addEventListener('scroll', () => {
+    //     categories_div.style.setProperty("--scroll-categories", categories_div.scrollLeft / (categories_div.scrollWidth - categories_div.clientWidth));
+    //     // categories_div.style.setProperty("--scroll-categories", categories_div.offsetLeft);
+    //     console.log('sdww ' + categories_div.children[1].offsetLeft);
+    //     for (let i = 0; i < categories_div.children.length; i++) {
+    //         categories_div.children[i].style.animation = 'big_middle 1s linear reverse';
+    //         categories_div.children[i].style.animationPlayState = 'paused';
+    //         categories_div.children[i].style.animationDelay = 'calc(var(--scroll-categories) * -1s)'; 
+    //     }
+        
+    // });
+
+    categories_div.addEventListener('click', () => {
+        for (let i = 0; i < categories_div.children.length; i++) {
+            categories_div.children[i].classList.add('home__sie_sides_animation');
+            setTimeout(() => {
+                categories_div.children[i].classList.remove('home__sie_sides_animation');
+            }, 950);
+        }
     });
+
+    
+
+    window.addEventListener("scroll", () => {
+        document.body.style.setProperty("--scroll-body", window.scrollY / (document.body.offsetHeight - window.innerHeight));
+    });
+
+    
+    // categories_div.addEventListener('click', () => {
+    //     categories[1].classList.add('home__categorie_center_animation');
+    //     categories[2].classList.add('home__categorie_sides_animation');
+    //     setTimeout(() => {
+    //         // categories.forEach((categorie, i) => {;
+    //         //     categorie.classList.add('home__categorie_sides');
+    //         //     categories_array.appendChild(categories_array_reordered);
+    //         // });
+    //         categories[0].remove();
+    //         categories_div.append(categories_array[0]);
+    //     }, 950);
+    //     console.log('categories_center.classList.add');
+    //     // setTimeout(() => {
+    //     //     categories_center.classList.remove('home__categorie_center_animation');
+    //     //     console.log('categories_center.classList.remove');
+    //     // }, 1000);
+    // });
+    
+    // prevBtn.addEventListener('click', () => {
+    //     currentIndex = (currentIndex - 1 + categories.length) % categories.length;
+    //     showcategorie(currentIndex);
+    // });
+
+    // nextBtn.addEventListener('click', () => {
+    //     currentIndex = (currentIndex + 1) % categories.length;
+    //     showcategorie(currentIndex);
+    // });
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -75,6 +127,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const firstSpan = document.querySelector('#first_span');
     const secondSpan = document.querySelector('#second_span');
     const thirdSpan = document.querySelector('#third_span');
+    let isClicked = false;
+
+    firstSpan.addEventListener('click', (e) => {
+        console.log(e.target.id);
+        if (!isClicked) {
+            isClicked = true;
+            firstSpan.classList.add('blue_circle');
+        }
+        else {
+            isClicked = false;
+            firstSpan.classList.remove('blue_circle');
+        }
+    });
 
     function scrollToSection(index) {
         if (index >= 0 && index < sections.length) {
@@ -103,26 +168,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
             switch (index) {
                 case 0:
-                    // firstSpan.style.animation = 'turn_to_shrink_animation 1s linear forwards';
-                    // firstSpan.style.animationPlayState = 'paused';
-                    // firstSpan.style.animationDelay = 'calc(var(--scroll) * -3s)';                   
-                    // animation-play-state: paused;
-                    // animation-delay: calc(var(--scroll) * -3s);
+                    firstSpan.style.animation = 'turn_to_shrink_animation 1s linear forwards';
+                    firstSpan.style.animationPlayState = 'paused';
+                    firstSpan.style.animationDelay = 'calc(var(--scroll-body) * -1s)'; 
+                    
+
+                    carousel.style.animation = 'view_carrousel 1s linear reverse';
+                    carousel.style.animationPlayState = 'paused';
+                    carousel.style.animationDelay = 'calc(var(--scroll-body) * -2s)'; 
+
+                    console.log(index);
+     
                     break;
                 case 1:
-                    firstSpan.style.animation = 'turn_to_shrink_animation 1s cubic-bezier(.19,1,.22,1) forwards';
-                    firstSpan.style.animationPlayState = 'paused';
-                    firstSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';         
+
+                    // secondSpan.style.animation = 'turn_to_shrink_animation 1s linear reverse';
+                    // secondSpan.style.animationPlayState = 'paused';
+                    // secondSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';
+                    console.log(index);
                     break;
                 case 2:
-                    secondSpan.style.animation = 'turn_to_shrink_animation 1s cubic-bezier(.19,1,.22,1) forwards';
+                    secondSpan.style.animation = 'turn_to_shrink_animation 1s linear reverse';
                     secondSpan.style.animationPlayState = 'paused';
-                    secondSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';         
+                    secondSpan.style.animationDelay = 'calc(var(--scroll) * -1s)'; 
+                    console.log(index);     
                     break;
                 case 3:
-                    thirdSpan.style.animation = 'turn_to_shrink_animation 1s cubic-bezier(.19,1,.22,1) forwards';
+                    thirdSpan.style.animation = 'turn_to_shrink_animation 1s linear forwards';
                     thirdSpan.style.animationPlayState = 'paused';
-                    thirdSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';          
+                    thirdSpan.style.animationDelay = 'calc(var(--scroll) * -1s)'; 
+                    console.log(index);         
                     break;
                 case 4:
                 default:
@@ -177,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                             const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
                             section.style.setProperty("--scroll", sectionProgress);
-                            console.log(`Section ${index + 1} scroll progress:`, sectionProgress);
+                            // console.log(`Section ${index + 1} scroll progress:`, sectionProgress);
                         }
                     }, false);
                 });
@@ -187,4 +262,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
+
+    
 });
