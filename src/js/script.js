@@ -53,19 +53,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     categories_left.addEventListener('click', () => {
         console.log('left');
-        categories_left.classList.add('left-to-center_animation');
-        categories_center.classList.add('center-to-right_animation');
-        categories_right.classList.add('right-to-left_animation');
-        categories_right.classList.remove('right-to-center_animation');
-        categories_center.classList.remove('center-to-left_animation');
-        categories_left.classList.remove('left-to-right_animation');
+ 
     });
 
     categories_right.addEventListener('click', () => {
         console.log('right');
-        categories_left.classList.remove('left-to-center_animation');
-        categories_center.classList.remove('center-to-right_animation');
-        categories_right.classList.remove('right-to-left_animation');
+        // categories_right.classList.add('right-to-center_animation');
+        // categories_center.classList.add('center-to-left_animation');
+        // categories_left.classList.add('left-to-right_animation');
+        // categories_left.classList.remove('left-to-center_animation');
+        // categories_center.classList.remove('center-to-right_animation');
+        // categories_right.classList.remove('right-to-left_animation');
     });
 
     // function slideLeft() {

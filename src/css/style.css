@@ -1,4 +1,8 @@
+
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Rajdhani:wght@300&family=categorie+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 
 body{
     margin: 0;
@@ -227,7 +231,7 @@ header nav li:hover{
     gap: 18px;
     background-color: rgb(148, 174, 212);
     padding-bottom: 20%;
-
+    height: 100dvh;
 }
 
 #home__portfolio h2{
@@ -253,21 +257,24 @@ header nav li:hover{
     align-items: center;
     gap: 18px;
     overflow: auto; */
-    width: 100dvh;
-    height: 100dvh;
+    transform-style: preserve-3d;
+    transition: 1s;
+    perspective: 1000px;
 
-    &::-webkit-scrollbar {
+
+    /* &::-webkit-scrollbar {
         display: none;
-    }
+    } */
 
     div{
         flex-shrink: 0;
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: 
+        transform-style: preserve-3d;
+        /* transform: 
             translateX(-50%)
-            translateY(-50%);
+            translateY(-50%); */
         /* animation: big_middle 2s linear forwards;
         animation-play-state: paused;
         animation-delay: calc(var(--scroll-categories) * -2s); */
@@ -283,10 +290,10 @@ header nav li:hover{
         padding: 10px;
         margin: 0;
         text-align: center;
-        width: 200px;
-        height: 400px;
+        width: 300px;
+        height: 600px;
         border-radius: 10px;
-        transform: translateX(-320%) translateY(-50%);
+        /* transform: rotateY(60deg) translateZ(250px) rotateY(-60deg); */
         h3{
             color: rgb(255, 255, 255);
             font-size: 1rem;
@@ -312,10 +319,10 @@ header nav li:hover{
         padding: 10px;
         margin: 0;
         text-align: center;
-        width: 200px;
-        height: 400px;
+        width: 300px;
+        height: 600px;
         border-radius: 10px;
-        transform: translateX(220%) translateY(-50%);
+        /* transform: rotateY(60deg) translateZ(250px) rotateY(-60deg); */
         h3{
             color: rgb(255, 255, 255);
             font-size: 1rem;
@@ -343,7 +350,7 @@ header nav li:hover{
         width: 914px;
         height: 700px;
         border-radius: 10px;
-
+        /* transform: rotateY(60deg) translateZ(250px) rotateY(-60deg); */
         h3{
             color: white;
             font-size: 3rem;
@@ -467,6 +474,7 @@ header nav li:hover{
 
 .center-to-left_animation{
     animation: center-to-left 1s forwards;
+    
 }
 
 @keyframes center-to-left {
@@ -997,15 +1005,14 @@ About page
     height: 100dvh;
     width: 100%;
     background-color: rgba(137, 152, 219, 0.281);
-    h2{
+    /* h2{
         font-size: 4rem;
-        position: absolute;
         top: 45%;
         text-align: center;
         padding: 0;
         margin: 0;
         width: 100%;
-    }
+    } */
     .soft_skills_list{
         position: relative;
         /* top: 25%; */
@@ -1016,7 +1023,7 @@ About page
         transition: 1s;
         transform: translate(0, 0);
         /* left: 50%; */
-        background-color: rgba(78, 139, 136, 0.521);
+        /* background-color: rgba(78, 139, 136, 0.521); */
         display: flex;
         flex-direction: column;
         align-items: center;
