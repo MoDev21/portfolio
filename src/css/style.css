@@ -809,8 +809,17 @@ About page
     margin: 12% 0%;
 
     h2{
-        font-size: 6rem;   
-        writing-mode:sideways-lr;
+        font-size: 6rem;
+        writing-mode: sideways-lr;
+        transform: rotate(270deg);
+        margin: 0;
+        position: relative;
+        width: 8dvw;
+        height: 100%;
+        /* text-align: center; */
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 
     .skill_row{
