@@ -79,17 +79,17 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }, 950);
     // });
 
-    // categories_div.addEventListener('scroll', () => {
-    //     categories_div.style.setProperty("--scroll-categories", categories_div.scrollLeft / (categories_div.scrollWidth - categories_div.clientWidth));
-    //     // categories_div.style.setProperty("--scroll-categories", categories_div.offsetLeft);
-    //     console.log('sdww ' + categories_div.children[1].offsetLeft);
-    //     for (let i = 0; i < categories_div.children.length; i++) {
-    //         categories_div.children[i].style.animation = 'big_middle 1s linear reverse';
-    //         categories_div.children[i].style.animationPlayState = 'paused';
-    //         categories_div.children[i].style.animationDelay = 'calc(var(--scroll-categories) * -1s)'; 
-    //     }
+    categories_div.addEventListener('scroll', () => {
+        categories_div.style.setProperty("--scroll-categories", categories_div.scrollLeft / (categories_div.scrollWidth - categories_div.clientWidth));
+        // categories_div.style.setProperty("--scroll-categories", categories_div.offsetLeft);
+        console.log('sdww ' + categories_div.children[1].offsetLeft);
+        for (let i = 0; i < categories_div.children.length; i++) {
+            categories_div.children[i].style.animation = 'big_middle 1s linear reverse';
+            categories_div.children[i].style.animationPlayState = 'paused';
+            categories_div.children[i].style.animationDelay = 'calc(var(--scroll-categories) * -1s)'; 
+        }
         
-    // });
+    });
 
     categories_div.addEventListener('click', () => {
         for (let i = 0; i < categories_div.children.length; i++) {
@@ -151,9 +151,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSectionIndex = 0;
     let isScrolling = false;
     const classListNameArray = ['blue_circle', 'yellow_circle', 'color_changer', 'color_changer_v2'];
-    const firstSpan = document.querySelector('#first_span');
-    const secondSpan = document.querySelector('#second_span');
-    const thirdSpan = document.querySelector('#third_span');
+    const firstSpan = document.querySelector('.mosaic_container');
+    const secondSpan = document.querySelector('.carrousel');
+    const thirdSpan = document.querySelector('.about_container');
     let isClicked = false;
 
     firstSpan.addEventListener('click', (e) => {
@@ -200,11 +200,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     firstSpan.style.animationDelay = 'calc(var(--scroll-body) * -1s)'; 
                     
 
-                    carousel.style.animation = 'view_carrousel 1s linear reverse';
-                    carousel.style.animationPlayState = 'paused';
-                    carousel.style.animationDelay = 'calc(var(--scroll-body) * -2s)'; 
+                    secondSpan.style.animation = 'view_carrousel 1s linear reverse';
+                    secondSpan.style.animationPlayState = 'paused';
+                    secondSpan.style.animationDelay = 'calc(var(--scroll-body) * -2s)'; 
 
-                    console.log(index);
+                    console.log(firstSpan);
      
                     break;
                 case 1:

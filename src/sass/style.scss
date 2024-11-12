@@ -1,3 +1,6 @@
+@use "layout/_header.scss";
+@use "base/normalize.scss";
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Rajdhani:wght@300&family=categorie+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 body{
@@ -10,92 +13,6 @@ body{
     background-color: rgb(60, 81, 177);
 }
 
-header{
-    
-    padding: 10px;
-    margin: 0;
-    text-align: center;
-    position: relative;
-}
-
-header svg{
-    position: relative;
-    transition: 1s;
-}
-
-
-
-header h1{
-    color: rgb(255, 255, 255);
-    font-size: 9rem;
-    margin: 14% 0 21% 0%;
-    text-align: initial;
-}
-
-
-#first_span{
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background-color: rgba(89, 119, 252, 0.822);
-    position: fixed;
-    top: 25%;
-    left: 37%;
-    z-index: 0;
-    transition: 1s;
-    /* animation: turn_to_shrink_animation linear;
-    animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -3s);  */
-
-    /* animation: turn_to_shrink_animation 1s linear forwards; */
-    /* animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -3s); */
-    
-}
-
-#second_span{
-    width: 500px;
-    height: 500px;
-    border-radius: 0%;
-    background-color: rgba(184, 224, 209, 0.726);
-    position: fixed;
-    top: 25%;
-    left: 37%;
-    z-index: 0;
-    /* transition: 1s;
-    transform: scale(1); */
-    /* animation: turn_to_shrink_animation 1s linear reverse; */
-    /* animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -3s); */
-}
-
-#third_span{
-    width: 500px;
-    height: 500px;
-    border-radius: 20%;
-    background-color: rgba(198, 9, 236, 0.39);
-    position: fixed;
-    top: 25%;
-    left: 37%;
-    z-index: 0;
-    /* transition: .01s;
-    transform: scale(1); */
-    /* animation: turn_to_shrink_animation 1s linear forwards; */
-    /* animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -3s); */
-}
-
-@keyframes turn_to_shrink_animation { 
-    0% {
-        transform: scale(1);
-    } 
-    10%{
-        transform: scale(0.1);
-    }
-    100% {
-        transform: scale(0.01);
-    } 
-} 
 
 @keyframes view_carrousel {
     0% {    
@@ -129,90 +46,6 @@ header h1{
     animation: turn_to_shrink_animation 1s forwards;
 }
 
-.color_changer{
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background-color: rgba(137, 152, 219, 0.281);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    background-color: rgba(157, 236, 168, 0.507);
-}
-
-.color_changer_v2{
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background-color: rgba(137, 152, 219, 0.281);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    background-color: rgba(185, 0, 241, 0.757);
-}
-
-.content_zone{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-}
-
-:is(h1, h2, h3, p, a){
-    color: aliceblue;
-}
-
-a{
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-}
-
-.logo{
-    margin: 1%;
-}
-
-header nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    gap: 10px;
-}
-
-header nav ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    list-style: none;
-    gap: 10px;
-}
-
-
-header nav li{
-    border-style: solid;
-    border-color: rgb(255, 255, 255, 0);
-    border-width: 1px;
-    padding: 10px;
-    border-radius: 99px;
-    transition: .5s;
-}
-
-header nav li:hover{
-    border-style: solid;
-    border-color: rgb(255, 255, 255, 1);
-    border-width: 1px;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
 
 
 /*Porfolio*/
