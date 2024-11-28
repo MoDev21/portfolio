@@ -1,0 +1,22 @@
+@mixin scroll-animation($property, $start-value, $end-value, $duration: 500ms, $timing-function: ease-in-out) {
+    // Animation properties will go here
+    #{$property}: calc(#{$start-value} + (#{$end-value} - #{$start-value}) * var(--scroll-progress));
+  
+    animation: scrollAnimation #{$duration} #{$timing-function};
+    
+    @keyframes scrollAnimation {
+      to {
+        --scroll-progress: 1;
+      }
+    }
+
+}
+
+@mixin scoll-trigger($element-selector, $property, $start-value, $end-value, $duration: 500ms, $timing-function: ease-in-out) {
+    #{$element-selector} {
+        opacity: 0;
+
+        
+        @include scroll-animation($property, $start-value, $end-value, $duration, $timing-function);
+    }
+}
