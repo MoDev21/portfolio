@@ -19,10 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const categories_array_reordered = document.createDocumentFragment();
     const home__portfolio = document.querySelector('#home__portfolio');
     const categorie_details_object_array = [
-        {'images_url': '/images/ab817f161830163.63cb810c22ead.jpg', 'title': 'Work', 'description': 'lorem ipsum'}, 
-        {'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'}, 
-        {'images_url': '/images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'}
-        // {'images_url': '/images/the_chosen.jpg', 'title': 'Work', 'description': 'lorem ipsum'}
+        {'id': 1, 'images_url': '/images/ab817f161830163.63cb810c22ead.jpg', 'title': 'Work', 'description': 'lorem ipsum'}, 
+        {'id': 2, 'images_url': '/images/4139e280592771.5ce5873dc3d84.png', 'title': 'Work', 'description': 'lorem ipsum'}, 
+        {'id': 3, 'images_url': '/images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'id': 4, 'images_url': '/images/the_chosen.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'id': 5, 'images_url': '/images/BingWallpaper-2019-01-23.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
         
     ];
     const dropDownMenuCategoryArray = ['web dev', 'mobile dev', 'design', 'more'];
@@ -59,39 +60,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     categories_left.addEventListener('click', () => {
         console.log('left');
-        categories_left.classList.add('left-to-center_animation');
-        categories_center.classList.add('center-to-right_animation');
-        categories_right.classList.add('right-to-left_animation');
-        setTimeout(() => {
-            console.log(reorderCategorie_details_object_array(categorie_details_object_array));
-            for (let i = 0; i < categorie_details_object_array.length; i++) {
-                categories_div.children[i].style.backgroundImage  = `url(${categorie_details_object_array[i].images_url})`;
-            }
-            categories_left.classList.remove('left-to-center_animation');
-            categories_center.classList.remove('center-to-right_animation');
-            categories_right.classList.remove('right-to-left_animation');
-        }, 1200);
+        categories_right.classList.add('right-to-center_animation');
+        categories_center.classList.add('center-to-left_animation');
+        categories_left.classList.add('left-to-right_animation');
+        console.log(reorderCategorie_details_object_array(categorie_details_object_array));
+
+        this.onanimationend = () => {
+            console.log('onanimationend');
+            categories_right.classList.remove('right-to-center_animation');
+            categories_center.classList.remove('center-to-left_animation');
+            categories_left.classList.remove('left-to-right_animation');
+        }
+        for (let i = 0; i < categorie_details_object_array.length; i++) {
+            categories_div.children[i].style.backgroundImage  = `url(${categorie_details_object_array[i].images_url})`;
+            console.log(categories_div.children[i].style.backgroundImage);
+        }
     });
 
 
 
     categories_right.addEventListener('click', () => {
         console.log('right');
-        categories_right.classList.add('right-to-center_animation');
-        categories_center.classList.add('center-to-left_animation');
-        categories_left.classList.add('left-to-right_animation');
-        setTimeout(() => {
-            console.log(reverseReorderCategorie_details_object_array(categorie_details_object_array));
-            for (let i = 0; i < categorie_details_object_array.length; i++) {
-                categories_div.children[i].style.backgroundImage  = `url(${categorie_details_object_array[i].images_url})`;
-            }
-            categories_right.classList.remove('right-to-center_animation');
-            categories_center.classList.remove('center-to-left_animation');
-            categories_left.classList.remove('left-to-right_animation');
-        }, 1200);
-        // categories_right.classList.remove('left-to-center_animation');
-        // categories_center.classList.remove('center-to-left_animation');
-        // categories_left.classList.remove('right-to-left_animation');
+        categories_left.classList.add('left-to-center_animation');
+        categories_center.classList.add('center-to-right_animation');
+        categories_right.classList.add('right-to-left_animation');
+        console.log(reverseReorderCategorie_details_object_array(categorie_details_object_array));
+
+        this.onanimationend = () => {
+            categories_left.classList.remove('left-to-center_animation');
+            categories_center.classList.remove('center-to-right_animation');
+            categories_right.classList.remove('right-to-left_animation');
+        }
+        for (let i = 0; i < categorie_details_object_array.length; i++) {
+            categories_div.children[i].style.backgroundImage  = `url(${categorie_details_object_array[i].images_url})`;
+            console.log(i + ' ' + categories_div.children[i].style.backgroundImage);
+        }
+
     });
 
     function reorderCategorie_details_object_array(array) {
@@ -101,33 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function reverseReorderCategorie_details_object_array(array) {
-        const last_element = array.splice(0, 1);
-        array.push(...last_element);
+        const fisrt_element = array.splice(0, 1);
+        console.log(fisrt_element);
+        array.push(...fisrt_element);
         return array;
     }
 
 
 
-    // categories_div.addEventListener('click', () => {
-    //     for (let i = 0; i < categories_div.children.length; i++) {
-    //         categories_div.children[i].classList.add('home__sie_sides_animation');
-            
-    //         setTimeout(() => {
-    //             categories_div.children[i].classList.remove('home__sie_sides_animation');
-    //         }, 950);
-    //     }
-    // });
-
-    // function slideLeft() {
-        
-    // }
-
-    // home__portfolio.addEventListener('click', () => {
-    //     categories_div.classList.add('categories_animation');
-    //     setTimeout(() => {
-    //         categories_div.classList.remove('categories_animation');
-    //     }, 950);
-    // });
 
     categories_div.addEventListener('scroll', () => {
         categories_div.style.setProperty("--scroll-categories", categories_div.scrollLeft / (categories_div.scrollWidth - categories_div.clientWidth));
@@ -150,33 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     
-    // categories_div.addEventListener('click', () => {
-    //     categories[1].classList.add('home__categorie_center_animation');
-    //     categories[2].classList.add('home__categorie_sides_animation');
-    //     setTimeout(() => {
-    //         // categories.forEach((categorie, i) => {;
-    //         //     categorie.classList.add('home__categorie_sides');
-    //         //     categories_array.appendChild(categories_array_reordered);
-    //         // });
-    //         categories[0].remove();
-    //         categories_div.append(categories_array[0]);
-    //     }, 950);
-    //     console.log('categories_center.classList.add');
-    //     // setTimeout(() => {
-    //     //     categories_center.classList.remove('home__categorie_center_animation');
-    //     //     console.log('categories_center.classList.remove');
-    //     // }, 1000);
-    // });
-    
-    // prevBtn.addEventListener('click', () => {
-    //     currentIndex = (currentIndex - 1 + categories.length) % categories.length;
-    //     showcategorie(currentIndex);
-    // });
 
-    // nextBtn.addEventListener('click', () => {
-    //     currentIndex = (currentIndex + 1) % categories.length;
-    //     showcategorie(currentIndex);
-    // });
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
