@@ -168,7 +168,11 @@ body{
     }
     
     .home__categorie_center {
-        background-color: rgb(92, 94, 240);
+        backdrop-filter: blur(11px) saturate(129%);
+        -webkit-backdrop-filter: blur(11px) saturate(129%);
+        background-color: rgba(17, 25, 40, 0.1);
+        border-radius: 12px;
+        border: 3px solid rgba(255, 255, 255, 0.418);
         background-repeat: no-repeat;
         background-attachment: local;
         background-position-x: 48%;
