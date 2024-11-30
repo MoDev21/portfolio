@@ -67,42 +67,56 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let i = 0; i < categorie_details_object_array.length; i++) {
                 categories_div.children[i].style.backgroundImage  = `url(${categorie_details_object_array[i].images_url})`;
             }
-            // categories_left.style.backgroundImage = `url(${categorie_details_object_array[2].images_url})`;
-            // categories_center.style.backgroundImage = `url(${categorie_details_object_array[0].images_url})`;
-            // categories_right.style.backgroundImage = `url(${categorie_details_object_array[1].images_url})`;
             categories_left.classList.remove('left-to-center_animation');
             categories_center.classList.remove('center-to-right_animation');
             categories_right.classList.remove('right-to-left_animation');
         }, 1200);
-        // categories_right.classList.remove('right-to-center_animation');
-        // categories_center.classList.remove('center-to-left_animation');
-        // categories_left.classList.remove('left-to-right_animation');
     });
 
 
 
     categories_right.addEventListener('click', () => {
         console.log('right');
-        categories_left.classList.remove('left-to-center_animation');
-        categories_center.classList.remove('center-to-right_animation');
-        categories_right.classList.remove('right-to-left_animation');
+        categories_right.classList.add('right-to-center_animation');
+        categories_center.classList.add('center-to-left_animation');
+        categories_left.classList.add('left-to-right_animation');
+        setTimeout(() => {
+            console.log(reverseReorderCategorie_details_object_array(categorie_details_object_array));
+            for (let i = 0; i < categorie_details_object_array.length; i++) {
+                categories_div.children[i].style.backgroundImage  = `url(${categorie_details_object_array[i].images_url})`;
+            }
+            categories_right.classList.remove('right-to-center_animation');
+            categories_center.classList.remove('center-to-left_animation');
+            categories_left.classList.remove('left-to-right_animation');
+        }, 1200);
+        // categories_right.classList.remove('left-to-center_animation');
+        // categories_center.classList.remove('center-to-left_animation');
+        // categories_left.classList.remove('right-to-left_animation');
     });
 
     function reorderCategorie_details_object_array(array) {
-        const last_element = array.pop();
-        array.unshift(last_element);
+        const last_element = array.splice(array.length - 1, 1);
+        array.unshift(...last_element);
         return array;
     }
 
-    categories_div.addEventListener('click', () => {
-        for (let i = 0; i < categories_div.children.length; i++) {
-            categories_div.children[i].classList.add('home__sie_sides_animation');
+    function reverseReorderCategorie_details_object_array(array) {
+        const last_element = array.splice(0, 1);
+        array.push(...last_element);
+        return array;
+    }
+
+
+
+    // categories_div.addEventListener('click', () => {
+    //     for (let i = 0; i < categories_div.children.length; i++) {
+    //         categories_div.children[i].classList.add('home__sie_sides_animation');
             
-            setTimeout(() => {
-                categories_div.children[i].classList.remove('home__sie_sides_animation');
-            }, 950);
-        }
-    });
+    //         setTimeout(() => {
+    //             categories_div.children[i].classList.remove('home__sie_sides_animation');
+    //         }, 950);
+    //     }
+    // });
 
     // function slideLeft() {
         

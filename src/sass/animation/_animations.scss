@@ -1,3 +1,7 @@
+$animation_curve: ease-in;
+$animation_speed: .7s;
+
+
 @keyframes big_middle {
     0%{
         transform: scale(0.5);
@@ -17,7 +21,7 @@
 
 
 .left-to-right_animation{
-    animation: left-to-right 1s forwards;
+    animation: left-to-right $animation_speed reverse $animation_curve;
 }
 
 
@@ -31,7 +35,7 @@
 }
 
 .right-to-left_animation{
-    animation: right-to-left 1s forwards;
+    animation: right-to-left $animation_speed reverse $animation_curve;
 }
 
 @keyframes right-to-left{
@@ -49,7 +53,7 @@
 
 
 .left-to-center_animation{
-    animation: left-to-center 1s forwards;
+    animation: left-to-center $animation_speed reverse $animation_curve;
 }
 
 
@@ -69,7 +73,7 @@
 }
 
 .center-to-right_animation{
-    animation: center-to-right 1s forwards;
+    animation: center-to-right $animation_speed reverse $animation_curve;
 }
 
 @keyframes center-to-right {
@@ -88,7 +92,7 @@
 }
 
 .right-to-center_animation{
-    animation: right-to-center 1s forwards;
+    animation: right-to-center $animation_speed reverse $animation_curve;
 }
 
 @keyframes right-to-center {
@@ -107,7 +111,7 @@
 }
 
 .center-to-left_animation{
-    animation: center-to-left 1s forwards;
+    animation: center-to-left $animation_speed reverse $animation_curve;
 }
 
 // @keyframes center-to-left {
@@ -128,7 +132,7 @@
 
 
 .home__categorie_sides_animation{
-    animation: center-to-left 1s forwards;
+    animation: center-to-left $animation_speed reverse $animation_curve;
 }
 
 @keyframes categories-to-center {
