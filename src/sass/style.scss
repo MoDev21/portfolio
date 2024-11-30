@@ -110,8 +110,11 @@ body{
     }
 
     .home__categorie_left {
-        background-color: rgb(32, 74, 212);
-        
+        backdrop-filter: blur(11px) saturate(129%);
+        -webkit-backdrop-filter: blur(11px) saturate(129%);
+        background-color: rgba(17, 25, 40, 0.1);
+        border-radius: 12px;
+        border: 3px solid rgba(255, 255, 255, 0.418);
         background-repeat: no-repeat;
         background-attachment: local;
         background-position-x: 50%;
@@ -135,12 +138,19 @@ body{
             width: 200px;
             height: 200px;
         }
+
+        &:hover{
+            cursor: pointer;
+        }
         
     }
     
     .home__categorie_right {
-        background-color: rgb(32, 74, 212);
-        
+        backdrop-filter: blur(11px) saturate(129%);
+        -webkit-backdrop-filter: blur(11px) saturate(129%);
+        background-color: rgba(17, 25, 40, 0.1);
+        border-radius: 12px;
+        border: 3px solid rgba(255, 255, 255, 0.418);
         background-repeat: no-repeat;
         background-attachment: local;
         background-position-x: 50%;
@@ -164,6 +174,9 @@ body{
             width: 200px;
             height: 200px;
         }
+        &:hover{
+            cursor: pointer;
+        }
         
     }
     
@@ -172,7 +185,7 @@ body{
         -webkit-backdrop-filter: blur(11px) saturate(129%);
         background-color: rgba(17, 25, 40, 0.1);
         border-radius: 12px;
-        border: 3px solid rgba(255, 255, 255, 0.418);
+        border: 4px solid rgba(255, 255, 255, 0.418);
         background-repeat: no-repeat;
         background-attachment: local;
         background-position-x: 48%;
@@ -190,6 +203,9 @@ body{
             position: relative;
             top: 65%;
             
+        }
+        &:hover{
+            cursor: pointer;
         }
         
     }
