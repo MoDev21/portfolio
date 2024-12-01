@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {'id': 3, 'images_url': '/images/1e83c5161747711.63ca1cff04aca.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
         {'id': 4, 'images_url': '/images/the_chosen.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
         {'id': 5, 'images_url': '/images/BingWallpaper-2019-01-23.jpg', 'title': 'Work', 'description': 'lorem ipsum'},
+        {'id': 6, 'images_url': '/images/agentBananaV2.png', 'title': 'Work', 'description': 'lorem ipsum'},
         
     ];
     const dropDownMenuCategoryArray = ['web dev', 'mobile dev', 'design', 'more'];
