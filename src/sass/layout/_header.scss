@@ -199,6 +199,20 @@ a{
     margin: 1%;
 }
 
+
+@keyframes mosaic_container_appeares {
+    0%{
+        opacity: 0;
+        transform: scale(0) translate(-50%, -50%) rotate(45deg);
+        
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(0deg);
+    }
+}
+
+
 .mosaic_container{
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -214,6 +228,9 @@ a{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
+    animation: mosaic_container_appeares linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 60%;
 
     .mosaic_piece{
         border-radius: 10px;
