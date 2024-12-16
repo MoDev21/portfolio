@@ -235,12 +235,27 @@ $animation_speed: .7s;
     }
 }
 
-.carrousel {
+.carrousel_animation{
     
-    animation: carrourel_appeares linear;
-    animation-timeline: view();
-    animation-range: entry 10% cover 40%;
+    animation: carrourel_appeares .5s linear;
+
     
+}
+
+@keyframes carrousel_skrinks_goes_down {
+    0%{
+        transform: translateY(0);
+        transform: scale(1);
+    }
+    100%{
+        transform: translateY(-100%);
+        transform: scale(0.1);
+    }
+    
+}
+
+.carrousel_animation_goes_down{
+    animation: carrousel_skrinks_goes_down .5s linear;
 }
 
 

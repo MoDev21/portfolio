@@ -117,11 +117,11 @@ header nav li:hover{
     top: 25%;
     left: 37%;
     z-index: 0;
-    /* transition: .01s;
-    transform: scale(1); */
-    /* animation: turn_to_shrink_animation 1s linear forwards; */
-    /* animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -3s); */
+    transition: .01s;
+    transform: scale(1);
+    animation: turn_to_shrink_animation 1s linear forwards; 
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -3s); 
 }
 
 @keyframes turn_to_shrink_animation { 
@@ -228,9 +228,8 @@ a{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-    animation: mosaic_container_appeares linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 60%;
+    animation: mosaic_container_appeares 1s linear;
+    
 
     .mosaic_piece{
         border-radius: 10px;

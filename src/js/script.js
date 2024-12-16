@@ -149,16 +149,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Smooth scrolling with wheel
-    // const sections = document.querySelectorAll('section, header, footer');
-    // let currentSectionIndex = 0;
-    // let isScrolling = false;
-    // const classListNameArray = ['blue_circle', 'yellow_circle', 'color_changer', 'color_changer_v2'];
-    // const firstSpan = document.querySelector('.mosaic_container');
-    // const secondSpan = document.querySelector('.carrousel');
-    // const thirdSpan = document.querySelector('.about_container');
-    // let isClicked = false;
+    const sections = document.querySelectorAll('section, header, footer');
+    let currentSectionIndex = 0;
+    let isScrolling = false;
+    const classListNameArray = ['blue_circle', 'yellow_circle', 'color_changer', 'color_changer_v2'];
+    const firstSpan = document.querySelector('.mosaic_container');
+    const secondSpan = document.querySelector('.carrousel');
+    const thirdSpan = document.querySelector('.about_container');
+    let isClicked = false;
 
-    // firstSpan.addEventListener('click', (e) => {
+    
+    // firstSpan.addEventListener('click', (e) => {                                                                 
     //     console.log(e.target.id);
     //     if (!isClicked) {
     //         isClicked = true;
@@ -169,7 +170,25 @@ document.addEventListener('DOMContentLoaded', function() {
     //         firstSpan.classList.remove('blue_circle');
     //     }
     // });
+    const targetSections = sections[currentSectionIndex];
 
+    function sectionDetection(index) {
+        console.log(index); 
+        if (index >= 0 && index < sections.length){
+            const targetPosition = targetSections.offsetTop - window.innerHeight * 0; 
+            
+            const currentPosition = window.scrollY;
+            console.log('currentSectionIndex: ' + currentPosition);
+            if (currentPosition >= targetPosition) {
+                currentSectionIndex = sections[targetSections];
+                window.removeEventListener('wheel', sectionDetection);
+                isScrolling = false;
+                
+            }
+        }
+
+    }
+    
     // function scrollToSection(index) {
     //     if (index >= 0 && index < sections.length) {
     //         isScrolling = true;
@@ -253,22 +272,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // }
 
 
-    // var counter = 0;
-    // window.addEventListener('wheel', handleScrollEvent);
+    var counter = 0;
+    window.addEventListener('wheel', handleScrollEvent(targetSections));
 
-    // function handleScrollEvent(event) {
-    //     // counter++;
-    //     // console.log('counter: '+ counter);
-    //     if (event.deltaY > 0) {
-    //         // Scrolling down
-    //         currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
-    //     } else {
-    //         // Scrolling up
-    //         currentSectionIndex = Math.min(currentSectionIndex - 1, sections.length + 1);
-    //     }
+    function handleScrollEvent(event) {
+        // counter++;
+        // console.log('counter: '+ counter);
+        if (event.deltaY > 0) {
+            // Scrolling down
+            currentSectionIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
+        } else {
+            // Scrolling up
+            currentSectionIndex = Math.min(currentSectionIndex - 1, sections.length + 1);
+        }
 
-    //     scrollToSection(currentSectionIndex);
-    // }
+        sectionDetection(currentSectionIndex);
+    }
 
     // const bluecircle = document.querySelector('.blue_circle');
 
@@ -303,23 +322,53 @@ document.addEventListener('DOMContentLoaded', function() {
     // });
 
     const options = {
-        root: null,
-        rootMargin: '50px',
+        root: document.querySelector('#sections'),
+        rootMargin: '100px',
         threshold: 0.1
     };
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            observer.unobserve(entry.target);
-        }
-    });
-    }, options);
-    
-    document.querySelectorAll('.scroll-trigger').forEach(el => {
-        observer.observe(el);
-    });
+
+    const callback = (entries, observer) => {
+        entries.forEach(entry => {
+            
+            if (entry.isIntersecting) {
+                console.log(entry);
+                if (entry.target.getAttribute('id') === 'header') {
+                    document.querySelector('.carrousel').classList.remove('carrousel_animation');
+                    console.log('home');
+                }
+                if (entry.target.getAttribute('id') === 'home__portfolio') {
+                    document.querySelector('.carrousel').classList.add('carrousel_animation');
+                    document.querySelector('.carrousel').classList.remove('carrousel_animation_goes_down');
+                    console.log('home__portfolio');
+                }
+                if (entry.target.getAttribute('id') === 'about') {
+                    document.querySelector('.carrousel').classList.remove('carrousel_animation');
+                    document.querySelector('.carrousel').classList.add('carrousel_animation_goes_down');
+                    console.log('about');
+                }
+                // entry.target.classList.add('active');
+
+                // observer.unobserve(entry.target);
+            }
+        });
+    };
 
     
+
+    //    const callback = (entries, observer) => {
+    //     entries.forEach(entry => {
+    //         if (entry.isIntersecting) {
+    //             entry.target.classList.add('active');
+    //         } else {
+    //             entry.target.classList.remove('active');
+    //         }
+    //     });
+    // };
+    
+    const observer = new IntersectionObserver(callback, options) 
+
+    document.querySelectorAll('section, header, footer').forEach(entry => {
+        console.log(entry);
+        observer.observe(entry);
+    });
 });

@@ -34,9 +34,9 @@ body{
 
 .blue_circle{
     transform: scale(0.1);
-    /* animation: turn_to_shrink_animation linear;
+    animation: turn_to_shrink_animation linear;
     animation-play-state: paused;
-    animation-delay: calc(var(--scroll) * -3s);  */
+    animation-delay: calc(var(--scroll) * -3s); 
 }
 
 .yellow_circle{
@@ -62,7 +62,7 @@ body{
     align-items: center;
     gap: 18px;
     background-color: rgb(226, 196, 157);
-    padding-bottom: 20%;
+    padding-bottom: 10%;
 
 }
 
