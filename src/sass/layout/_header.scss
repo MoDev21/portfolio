@@ -39,8 +39,9 @@ header nav {
     justify-content: space-between;
     list-style: none;
     gap: 10px;
-    position: relative;
+    position: fixed;
     z-index: 2;
+    width: 100%;
 }
 
 header nav ul{

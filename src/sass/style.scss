@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Rajdhani:wght@300&family=categorie+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 body{
     margin: 0;
     padding: auto;
@@ -14,8 +15,33 @@ body{
     font-weight: 300;
     font-style: normal;
     background-color: rgb(60, 81, 177);
+    overflow: hidden;
+
 }
 
+home__container{
+    transition: all 1s ease-in-out;
+}
+
+@keyframes header_move_up {
+    0%{
+        transform: translateY(var(--anim_scroll_start));
+        
+    }
+    100%{
+        transform: translateY(var(--anim_scroll_end));
+    }
+    
+}
+
+@keyframes header_move_down {
+    0%{
+        transform: translateY(var(--anim_scroll_start));
+    }
+    100%{
+        transform: translateY(var(--anim_scroll_end));
+    }
+}
 
 @keyframes view_carrousel {
     0% {    
