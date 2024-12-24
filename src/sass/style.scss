@@ -16,12 +16,13 @@ body{
     font-style: normal;
     background-color: rgb(60, 81, 177);
     overflow: hidden;
-
 }
 
 home__container{
     transition: all 1s ease-in-out;
 }
+
+
 
 @keyframes header_move_up {
     0%{
@@ -250,7 +251,7 @@ home__container{
     flex-wrap: wrap;
     align-items: center;
     gap: 18px;
-    height: auto;
+    height: 145dvh;
 }
 
 .about_container{
