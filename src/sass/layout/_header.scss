@@ -2,6 +2,15 @@
 $color: rgb(0, 0, 0);
 $image_size: 145%;
 
+:is(h1, h2, h3, p, a){
+    color: rgb(0, 0, 0);
+}
+
+a{
+    text-decoration: none;
+    color: $color;
+    font-weight: 400;
+}
 header{
     background-color: rgb(190, 131, 52);
     padding: 10px;
@@ -22,6 +31,7 @@ header svg{
 header h1{
     color: $color;
     font-size: 9rem;
+    font-weight: 300;
     margin: 14% 0 21% 0%;
     text-align: initial;
     z-index: 2;
@@ -60,6 +70,7 @@ nav li{
     padding: 10px;
     border-radius: 99px;
     transition: .5s;
+    font-weight: 100;
 }
 
 nav li:hover{
@@ -186,15 +197,7 @@ nav li:hover{
     z-index: 1;
 }
 
-:is(h1, h2, h3, p, a){
-    color: rgb(0, 0, 0);
-}
 
-a{
-    text-decoration: none;
-    color: $color;
-    font-weight: 600;
-}
 
 .logo{
     margin: 1%;

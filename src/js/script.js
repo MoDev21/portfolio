@@ -189,87 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }
     
-    // function scrollToSection(index) {
-    //     if (index >= 0 && index < sections.length) {
-    //         isScrolling = true;
-    //         const targetSection = sections[index];
-    //         const targetPosition = targetSection.offsetTop - window.innerHeight * 0;
-    //         window.removeEventListener('wheel', scrollToSection);
-            
-    //         window.scrollTo({
-    //             top: targetPosition,
-    //             behavior: 'smooth'
-    //         });
-
-    //         function classListNameChange() {
-    //             for (let i = 0; i < classListNameArray.length; i++) {
-    //                 bluecircle.classList.remove(classListNameArray[i]);
-    //             }
-                
-    //             if (currentSectionIndex !== 0) {
-    //                 bluecircle.classList.add(classListNameArray[currentSectionIndex]);
-    //             }
-                
-    //         }
-        
-            
-
-    //         switch (index) {
-    //             case 0:
-    //                 // firstSpan.style.animation = 'turn_to_shrink_animation 1s linear forwards';
-    //                 // firstSpan.style.animationPlayState = 'paused';
-    //                 // firstSpan.style.animationDelay = 'calc(var(--scroll-body) * -1s)'; 
-                    
-
-    //                 // secondSpan.style.animation = 'view_carrousel 1s linear reverse';
-    //                 // secondSpan.style.animationPlayState = 'paused';
-    //                 // secondSpan.style.animationDelay = 'calc(var(--scroll-body) * -2s)'; 
-
-    //                 console.log(firstSpan);
-     
-    //                 break;
-    //             case 1:
-
-    //                 // secondSpan.style.animation = 'turn_to_shrink_animation 1s linear reverse';
-    //                 // secondSpan.style.animationPlayState = 'paused';
-    //                 // secondSpan.style.animationDelay = 'calc(var(--scroll) * -1s)';
-    //                 const glob = require('glob');
-
-    //                 glob('/src/js/**/*.js', (err, files) => {
-    //                     if (err) {
-    //                         console.error(err);
-    //                     } else {
-    //                         files.forEach((file) => {
-    //                         const fileName = path.basename(file);
-    //                         console.log(fileName);
-    //                         });
-    //                     }
-    //                 });
-    //                 console.log(`index 553 `);
-    //                 break;
-    //             case 2:
-    //                 // secondSpan.style.animation = 'turn_to_shrink_animation 1s linear reverse';
-    //                 // secondSpan.style.animationPlayState = 'paused';
-    //                 // secondSpan.style.animationDelay = 'calc(var(--scroll) * -1s)'; 
-    //                 console.log(index);     
-    //                 break;
-    //             case 3:
-    //                 // thirdSpan.style.animation = 'turn_to_shrink_animation 1s linear forwards';
-    //                 // thirdSpan.style.animationPlayState = 'paused';
-    //                 // thirdSpan.style.animationDelay = 'calc(var(--scroll) * -1s)'; 
-    //                 console.log(index);         
-    //                 break;
-    //             case 4:
-    //             default:
-    //                 break;
-    //         }
-
-    //         console.log('sections.length:'+ index);
-    //         setTimeout(() => {
-    //             isScrolling = false;
-    //         }, 1000); // Adjust this value based on your scroll animation duration
-    //     }
-    // }
 
 
     var counter = 0;
@@ -289,37 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sectionDetection(currentSectionIndex);
     }
 
-    // const bluecircle = document.querySelector('.blue_circle');
 
-    // // Optional: Update current section on regular scroll
-    // window.addEventListener('wheel', function() {
-
-
-    //     const scrollPosition = window.scrollY;
-    //     for (let i = 0; i < sections.length; i++) {
-    //         if (scrollPosition >= sections[i].offsetTop - window.innerHeight / 2) {
-    //             // console.log('section length: ', (((scrollPosition / sections[i].offsetTop) * 100) - 50) + '%');
-    //             // console.log('current section index: ', (sections[i].offsetTop - window.innerHeight / 2));
-
-    //             currentSectionIndex = i;
-    //             // bluecircle.style.borderRadius = (((scrollPosition / sections[i].offsetTop) * 100) - 50) + '%';
-    //             sections.forEach((section, index) => {
-    //                 window.addEventListener("scroll", () => {
-    //                     const sectionTop = section.offsetTop;
-    //                     const sectionHeight = section.offsetHeight;
-    //                     const scrollPosition = window.scrollY;
-                        
-    //                     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-    //                         const sectionProgress = (scrollPosition - sectionTop) / sectionHeight;
-    //                         section.style.setProperty("--scroll", sectionProgress);
-    //                         // console.log(`Section ${index + 1} scroll progress:`, sectionProgress);
-    //                     }
-    //                 }, false);
-    //             });
-                
-    //         }
-    //     }
-    // });
 
     const options = {
         root: document.querySelector('#sections'),
@@ -334,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(entry);
                 if (entry.target.getAttribute('id') === 'header') {
                     document.querySelector('.carrousel').classList.remove('carrousel_animation');
+                    document.querySelector('.carrousel').classList.add('carrousel_animation_goes_down');
                     console.log('home');
                 }
                 if (entry.target.getAttribute('id') === 'home__portfolio') {
@@ -355,15 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
 
-    //    const callback = (entries, observer) => {
-    //     entries.forEach(entry => {
-    //         if (entry.isIntersecting) {
-    //             entry.target.classList.add('active');
-    //         } else {
-    //             entry.target.classList.remove('active');
-    //         }
-    //     });
-    // };
+
     
     const observer = new IntersectionObserver(callback, options) 
 
@@ -371,4 +253,75 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(entry);
         observer.observe(entry);
     });
+    let currentStart = 0 
+    let currentEnd = 0 
+    let wheelCounter = 0
+    window.addEventListener('wheel', () => {
+        wheelCounter += 1;
+        
+        const bodyContainer = document.querySelector('.home_container');
+
+        console.log(wheelCounter);
+        if ((wheelCounter < 2)) {
+            if (event.deltaY > 0) {
+                currentEnd-= 25;
+                // currentStart-= 25;
+                anim_scroll_handler(currentStart, currentEnd, bodyContainer, 'down');
+                
+                if (currentEnd === 0) {
+                    currentStart = 0;
+                }
+                else {
+                    currentStart -= 25; 
+                }
+                
+                console.log('down currentEnd ' + currentEnd + ' currentStart ' + currentStart);
+            }
+            else if (event.deltaY < 0) {
+                
+                currentEnd+= 25;
+                // currentStart+= 25;
+                anim_scroll_handler(currentStart, currentEnd, bodyContainer, 'up');
+                if (currentEnd === 0) {
+                    currentStart = 0;
+                }
+                else {
+                    currentStart += 25; 
+                }
+                console.log('up currentEnd ' + currentEnd + ' currentStart ' + currentStart);
+
+                
+            }
+    
+        }
+
+
+
+        console.log(event.deltaY);
+        
+
+
+
+    });
+
+    function anim_scroll_handler(start, end, bodyContainer, directionName = 'up') {
+
+        const root = document.documentElement
+        bodyContainer.style.animation = `header_move_${directionName} 1s forwards` ;
+        root.style.setProperty("--anim_scroll_start", `${start}%`);
+        root.style.setProperty("--anim_scroll_end",  `${end}%`);
+        
+        console.log(bodyContainer.style.animation);
+
+
+        bodyContainer.onanimationend = (event) => {
+            if (event.animationName === `header_move_${directionName}`) {
+                console.log('animation ended');
+                bodyContainer.style.animation = 'none';
+                bodyContainer.style.transform = 'translateY(var(--anim_scroll_end))';
+                wheelCounter = 0;        
+            }
+                     
+        }
+    }
 });
