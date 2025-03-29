@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('wheel', () => {
         wheelCounter += 1;
         
-        const bodyContainer = document.querySelector('.home_container');
+        const bodyContainer = document.querySelector('.home_section_container');
 
         console.log(wheelCounter);
         if ((wheelCounter < 2)) {

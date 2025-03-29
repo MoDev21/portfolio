@@ -1,0 +1,60 @@
+.filter_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    height: 5dvh;
+    border-radius: 50px;
+    /* From https://css.glass */
+    backdrop-filter: blur(11px) saturate(129%);
+    -webkit-backdrop-filter: blur(11px) saturate(129%);
+    background-color: rgba(225, 229, 235, 0.24);
+    border: 4px solid rgba(255, 255, 255, 0.418);
+    border-image: linear-gradient(45deg, rgba(255, 255, 255, 0.418) , transparent) 30 round;
+    border-image-slice: 1;
+    border-radius: 50px;
+    clip-path: inset(0 0 0 0 round 50px);
+    padding: 5px;
+    .filter_btn{
+        margin: 8px 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        
+
+        input[type="radio"]{
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            display: none;
+            
+            &:checked ~ .checkmark{
+                border: 1px solid rgb(0, 0, 0);
+            }
+        }
+        
+        .checkmark{
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            
+            &:hover{
+                cursor: pointer;
+                border: 1px solid rgba(0, 0, 0, 0.377);
+            }
+        }
+    }
+
+
+}
+
+

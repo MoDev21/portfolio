@@ -1,0 +1,91 @@
+.portfolio_background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    filter: blur(14px);
+    z-index: -1;
+    top: 10px;
+    .portfolio_background__image{
+        position: absolute;
+        background-repeat: no-repeat;
+        background-attachment: local; 
+        background-size: cover;
+        background-position-x: 48%;
+        background-position-y: 45%;
+    }
+    .portfolio_background__image:nth-child(1){
+        width: 814px;
+        height: 537px; 
+        background-image: url('../images/Anachronisme.jpg');
+        position: absolute;
+        top: 14%;
+        left: 25%;
+
+    }
+    .portfolio_background__image:nth-child(2){
+        width: 260px;
+        height: 171px;
+        background-image: url('../images/beautiful_church.jpg');
+        position: absolute;
+        top: 40%;
+        left: 1%;
+
+    }
+    .portfolio_background__image:nth-child(3){
+        width: 364px;
+        height: 239px;
+        background-image: url('../images/little_prince.jpg');
+        position: absolute;
+        top: 3%;
+        left: 6%;   
+        z-index: -1;
+    } 
+    .portfolio_background__image:nth-child(4){
+        width: 410px;
+        height: 271px;
+        background-image: url('../images/gentleman_bug.jpg');
+        position: absolute;
+        top: 3%;
+        left: 70%;
+        z-index: -1;
+    }
+    .portfolio_background__image:nth-child(5){
+        width: 534px;
+        height: 351px;
+        background-image: url('../images/hero_mask.jpg');
+        position: absolute;
+        top: 60%;
+        left: 67%;
+        z-index: -1;
+    }  
+
+}
+
+
+
+#about_portfolio_section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    height: auto;
+}
+
+
+.about_portfolio_gallery_container{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-template-rows: repeat(3, minmax(150px, 1fr));
+    gap: 10px;
+    height: 80%;
+    width: 80%;
+    margin-bottom: 10%;
+}
+
+.about_portfolio_gallery_container img{
+    width: 100%;
+    height: 100%;
+    /* From https://css.glass */
+    border-radius: 16px;
+
+}
